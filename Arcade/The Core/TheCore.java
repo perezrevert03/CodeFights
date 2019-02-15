@@ -1,24 +1,24 @@
 
 public class TheCore {
-
+	
 	public TheCore() {}
-
-  	// INTRO GATES
-
+	
+	// INTRO GATES
+	
 	// You are given a two-digit integer n. Return the sum of its digits.
-  	// [input] integer n: A positive two-digit integer.
-  	// Precondition: 10 ≤ n ≤ 99.
-  	int addTwoDigits(int n) {
-    	return n / 10 + n % 10;
-  	}
-
-  	// Given an integer n, return the largest number that contains exactly n digits.
-  	// [input] integer n.
-  	// Precondition: 1 ≤ n ≤ 9.
-  	int largestNumber(int n) {
-    return (int) Math.pow(10, n) - 1;
-  	}
-
+	// [input] integer n: A positive two-digit integer.
+	// Precondition: 10 ≤ n ≤ 99.
+	int addTwoDigits(int n) {
+		return n / 10 + n % 10;
+	}
+	
+	// Given an integer n, return the largest number that contains exactly n digits.
+	// [input] integer n.
+	// Precondition: 1 ≤ n ≤ 9.
+	int largestNumber(int n) {
+		return (int) Math.pow(10, n) - 1;
+	}
+	
 	// n children have got m pieces of candy. They want to eat as much candy as
 	// they can, but each child must eat exactly the same amount of candy as any
 	// other child. Determine how many pieces of candy will be eaten by all the
@@ -30,7 +30,7 @@ public class TheCore {
 	int candies(int n, int m) {
 		return (m / n) * n;
 	}
-
+	
 	// Your friend advised you to see a new performance in the most popular theater
 	// in the city. He knows a lot about art and his advice is usually good, but not
 	// this time: the performance turned out to be awfully dull. It's so bad you want
@@ -57,7 +57,7 @@ public class TheCore {
 	int seatsInTheater(int nCols, int nRows, int col, int row) {
 		return (nCols - (col - 1)) * (nRows - row);
 	}
-
+	
 	// Given a divisor and a bound, find the largest integer N such that:
 	// -> N is divisible by divisor.
 	// -> N is less than or equal to bound.
@@ -70,7 +70,7 @@ public class TheCore {
 	int maxMultiple(int divisor, int bound) {
 		return bound - (bound % divisor);
 	}
-
+	
 	// Consider integer numbers from 0 to n - 1 written down along the circle in such
 	// a way that the distance between any two neighboring numbers is equal (note
 	// that 0 and n - 1 are neighboring, too).
@@ -82,11 +82,11 @@ public class TheCore {
 	// Precondition: 0 ≤ firstNumber ≤ n - 1.
 	int circleOfNumbers(int n, int firstNumber) {
 		if(firstNumber < n / 2)
-			return firstNumber + (n / 2);
+		return firstNumber + (n / 2);
 		else
-			return firstNumber - (n / 2);
+		return firstNumber - (n / 2);
 	}
-
+	
 	// One night you go for a ride on your motorcycle. At 00:00 you start your engine,
 	// and the built-in timer automatically begins counting the length of your ride,
 	// in minutes. Off you go to explore the neighborhood.
@@ -101,19 +101,19 @@ public class TheCore {
 	// Precondition: 0 ≤ n < 60 · 24.
 	int lateRide(int n) {
 		int s1, s2, s3, s4;
-
+		
 		int hour = n / 60;
 		int minutes = (n % 60);
-
+		
 		s1 = hour / 10;
 		s2 = hour % 10;
 		s3 = minutes / 10;
 		s4 = minutes % 10;
-
+		
 		return s1 + s2 + s3 + s4;
 	}
-
-  	// Some phone usage rate may be described as follows:
+	
+	// Some phone usage rate may be described as follows:
 	// -> first minute of a call costs min1 cents,
 	// -> each minute from the 2nd up to 10th (inclusive) costs min2_10 cents
 	// -> each minute after 10th costs min11 cents.
@@ -130,25 +130,25 @@ public class TheCore {
 	int phoneCall(int min1, int min2_10, int min11, int s) {
 		int money = s;
 		int minutes = 0;
-
+		
 		if ( money - min1 >= 0 ) {
 			money -= min1;
 			minutes ++;
 		}
-
+		
 		for (int i = 1; i < 10 && money - min2_10 >= 0 && minutes >= 1; i ++, minutes ++)
-			money -= min2_10;
-
+		money -= min2_10;
+		
 		while (money - min11 >= 0 && minutes >= 10) {
 			money -= min11;
 			minutes ++;
 		}
-
+		
 		return minutes;
 	}
-
-  	// AT THE CROSSROADS
-
+	
+	// AT THE CROSSROADS
+	
 	// You are playing an RPG game. Currently your experience points (XP) total is
 	// equal to experience. To reach the next level your XP should be at least at
 	// threshold. If you kill the monster in front of you, you will gain more
@@ -164,7 +164,7 @@ public class TheCore {
 	boolean reachNextLevel(int experience, int threshold, int reward) {
 		return experience + reward >= threshold;
 	}
-
+	
 	// You found two items in a treasure chest! The first item weighs weight1 and
 	// is worth value1, and the second item weighs weight2 and is worth value2. What
 	// is the total maximum value of the items you can take with you, assuming that
@@ -184,7 +184,7 @@ public class TheCore {
 	int knapsackLight(int v1, int w1, int v2, int w2, int mW) {
 		return w1 + w2 <= mW ? v1 + v2 : w1 <= mW && v1 >= v2 ? v1 : w2 <= mW ? (v2) : w1 <= mW ? v1 : 0;
 	}
-
+	
 	// You're given three integers, a, b and c. It is guaranteed that two of these
 	// integers are equal to each other. What is the value of the third integer?
 	// [input] integer a.
@@ -194,9 +194,9 @@ public class TheCore {
 	// [input] integer c.
 	// Precondition: 1 ≤ a ≤ 10^9.
 	int extraNumber(int a, int b, int c) {
-    	return a == b ? c : b == c ? a : b;
-  	}
-
+		return a == b ? c : b == c ? a : b;
+	}
+	
 	// Given integers a and b, determine whether the following pseudocode results
 	// in an infinite loop:
 	//   while a is not equal to b do
@@ -211,7 +211,7 @@ public class TheCore {
 	boolean isInfiniteProcess(int a, int b) {
 		return !(a <= b && a % 2 == b % 2);
 	}
-
+	
 	// Consider an arithmetic expression of the form a#b=c. Check whether it is
 	// possible to replace # with one of the four signs: +, -, * or / to obtain a
 	// correct expression.
@@ -221,14 +221,14 @@ public class TheCore {
 	// Precondition: 1 ≤ b ≤ 20.
 	// [input] integer c.
 	// Precondition: 0 ≤ c ≤ 20.
-  	boolean arithmeticExpression(int a, int b, int c) {
+	boolean arithmeticExpression(int a, int b, int c) {
 		if (a + b == c) return true;
 		if (a - b == c) return true;
 		if (a * b == c) return true;
 		if ((double) a / b == (double) c) return true;
 		return false;
-  	}
-
+	}
+	
 	// In tennis, a set is finished when one of the players wins 6 games and the
 	// other one wins less than 5, or, if both players win at least 5 games, until
 	// one of the players wins 7 games.
@@ -242,9 +242,9 @@ public class TheCore {
 	// Precondition: 0 ≤ score2 ≤ 10.
 	boolean tennisSet(int s1, int s2) {
 		return (s1 == 6 && s2 < 5) || (s2 == 7 && s1 >= 5 && s1 <= 6) ||
-			   (s2 == 6 && s1 < 5) || (s1 == 7 && s2 >= 5 && s2 <= 6);
+		(s2 == 6 && s1 < 5) || (s1 == 7 && s2 >= 5 && s2 <= 6);
 	}
-
+	
 	// Once Mary heard a famous song, and a line from it stuck in her head. That
 	// line was "Will you still love me when I'm no longer young and beautiful?".
 	// Mary believes that a person is loved if and only if he/she is both young and
@@ -260,11 +260,11 @@ public class TheCore {
 	// [input] boolean loved.
 	boolean willYou(boolean young, boolean beautiful, boolean loved) {
 		if (young && beautiful && loved) 
-			return false;
+		return false;
 		else 
-			return (young && beautiful) || loved;
+		return (young && beautiful) || loved;
 	}
-
+	
 	// You just bought a public transit card that allows you to ride the Metro for
 	// a certain number of days.
 	// Here is how it works: upon first receiving the card, the system allocates
@@ -282,9 +282,9 @@ public class TheCore {
 		int[] a2 = {31};
 		return lastNumberOfDays == 31 ? a1 : a2;
 	}
-
+	
 	// CORNER OF 0s AND 1s
-
+	
 	// Implement the missing code, denoted by ellipses. You may not modify the
 	// pre-existing code.
 	// In order to stop the Mad Coder evil genius you need to decipher the encrypted
@@ -302,7 +302,7 @@ public class TheCore {
 	int killKthBit(int n, int k) {
 		return n & ~(1 << (k - 1));
 	}
-
+	
 	// You are given an array of up to four non-negative integers, each less than 256.
 	// Your task is to pack these integers into one number M in the following way:
 	// -> The first element of the array occupies the first 8 bits of M;
@@ -315,19 +315,19 @@ public class TheCore {
 	int arrayPacking(int[] a) {
 		int number = 0;
 		String binary = "";
-
+		
 		String b;
 		for (int n : a) {
 			b = Integer.toBinaryString(n);
 			binary = b + binary;
-
+			
 			for (int i = 0; i < 8 - b.length(); i ++)
-				binary = "0" + binary;
+			binary = "0" + binary;
 		}
-
+		
 		return Integer.parseInt(binary, 2);
 	}
-
+	
 	// You are given two numbers a and b where 0 ≤ a ≤ b. Imagine you construct an
 	// array of all the integers from a to b inclusive. You need to count the number
 	// of 1s in the binary representations of all the numbers in the array.
@@ -337,31 +337,31 @@ public class TheCore {
 	// Precondition: 0 ≤ b ≤ b.
 	int rangeBitCount(int a, int b) {
 		int count = 0;
-
+		
 		String binary;
 		for (int i = a; i <= b; i ++) {
 			binary = Integer.toBinaryString(i);
 			for (int j = 0; j < binary.length(); j ++)
-				if (binary.charAt(j) == '1')
-					count ++;
+			if (binary.charAt(j) == '1')
+			count ++;
 		}
-
+		
 		return count;
 	}
-
+	
 	// Reverse the order of the bits in a given integer.
 	// [input] integer a.
 	// Precondition: 5 ≤ a ≤ 10^5.
 	int mirrorBits(int a) {
 		String binary = Integer.toBinaryString(a);
-
+		
 		String invBinary = "";
 		for (int i = binary.length() - 1; i >= 0; i --)
-			invBinary += binary.charAt(i);
-
+		invBinary += binary.charAt(i);
+		
 		return Integer.parseInt(invBinary, 2);
 	}
-
+	
 	// Implement the missing code, denoted by ellipses. You may not modify the pre-existing code.
 	// Presented with the integer n, find the 0-based position of the second rightmost
 	// zero bit in its binary representation (it is guaranteed that such a bit exists),
@@ -372,7 +372,7 @@ public class TheCore {
 	int secondRightmostZeroBit(int n) {
 		return ~(n | n + 1) & -~(n | n + 1);
 	}
-
+	
 	// Implement the missing code, denoted by ellipses. You may not modify the pre-existing code.
 	// You're given an arbitrary 32-bit integer n. Take its binary representation,
 	// split bits into it in pairs (bit number 0 and 1, bit number 2 and 3, etc.)
@@ -382,7 +382,7 @@ public class TheCore {
 	int swapAdjacentBits(int n) {
 		return (((n & 0x2AAAAAAA) >> 1) | ((n & 0x15555555) << 1));
 	}
-
+	
 	// Implement the missing code, denoted by ellipses. You may not modify the pre-existing code.
 	// You're given two integers, n and m. Find position of the rightmost bit in
 	// which they differ in their binary representations (it is guaranteed that such
@@ -395,7 +395,7 @@ public class TheCore {
 	int differentRightmostBit(int n, int m) {
 		return -~((~(n^m))^((~(n^m))+1))/2;
 	}
-
+	
 	// You're given two integers, n and m. Find position of the rightmost pair of equal bits in their binary representations (it is guaranteed that such a pair exists), counting from right to left.
 	// Return the value of 2position_of_the_found_pair (0-based).
 	// [input] integer n.
@@ -405,9 +405,9 @@ public class TheCore {
 	int equalPairOfBits(int n, int m) {
 		return n + m + 1 & ~m - n ;
 	}
-
+	
 	// LOOP TUNNEL
-
+	
 	// Given an integer n, find the minimal k such that:
 	// -> k = m! (where m! = 1 * 2 * ... * m) for some integer m;
 	// -> k >= n.
@@ -416,13 +416,13 @@ public class TheCore {
 	// Precondition: 1 ≤ n ≤ 120.
 	int leastFactorial(int n) {
 		int k = 1;
-
+		
 		for (int i = 1; k < n; i ++)
-			k *= i;
-
+		k *= i;
+		
 		return k;
 	}
-
+	
 	// Given integers n, l and r, find the number of ways to represent n as a sum
 	// of two integers A and B such that l ≤ A ≤ B ≤ r.
 	// [input] integer n: A positive integer.
@@ -433,7 +433,7 @@ public class TheCore {
 	// l ≤ r ≤ 10^9, r - l ≤ 10^6.
 	int countSumOfTwoRepresentations2(int n, int l, int r) {
 		int count = 0;
-
+		
 		int i = n / 2;
 		int j = n % 2 == 0 ? n / 2 : n / 2 + 1;
 		while (i >= l && j <= r) {
@@ -441,10 +441,10 @@ public class TheCore {
 			i --;
 			j ++;
 		}
-
+		
 		return count;
 	}
-
+	
 	// You are standing at a magical well. It has two positive integers written on
 	// it: a and b. Each time you cast a magic marble into the well, it gives you
 	// a * b dollars and then both a and b increase by 1. You have n magic marbles.
@@ -457,13 +457,13 @@ public class TheCore {
 	// Precondition: 0 ≤ n ≤ 5.
 	int magicalWell(int a, int b, int n) {
 		int money = 0;
-
+		
 		for (int i = 1; i <= n; i ++)
-			money += a ++ * b ++;
-
+		money += a ++ * b ++;
+		
 		return money;
 	}
-
+	
 	// To prepare his students for an upcoming game, the sports coach decides to
 	// try some new training drills. To begin with, he lines them up and starts with
 	// the following warm-up exercise: when the coach says 'L', he instructs the
@@ -480,20 +480,20 @@ public class TheCore {
 	// Precondition: 0 ≤ commands.length ≤ 35.
 	int lineUp(String commands) {
 		int count = 0;
-
+		
 		int pos = 0;
 		char c;
 		for (int i = 0; i < commands.length(); i ++) {
 			c = commands.charAt(i);
 			if (c == 'L') pos --;
 			else if (c == 'R') pos ++;
-
+			
 			if (pos % 2 == 0) count ++;
 		}
-
+		
 		return count;
 	}
-
+	
 	// A little boy is studying arithmetics. He has just learned how to add two
 	// integers, written one below another, column by column. But he always forgets
 	// about the important part - carrying.
@@ -504,17 +504,17 @@ public class TheCore {
 	// Precondition: 0 ≤ param2 ≤ 59999.
 	int additionWithoutCarrying(int param1, int param2) {
 		int sum = 0;
-
+		
 		for (int i = 1; param1 != 0 || param2 != 0; i *= 10) {
 			int s = param1 % 10 + param2 % 10;
 			sum += (s % 10) * i;
 			param1 /= 10;
 			param2 /= 10;
 		}
-
+		
 		return sum;
 	}
-
+	
 	// You have k apple boxes full of apples. Each square box of size m contains
 	// m × m apples. You just noticed two interesting properties about the boxes:
 	// -> 1. The smallest box is size 1, the next one is size 2,..., all the way
@@ -527,16 +527,16 @@ public class TheCore {
 	// Precondition: 1 ≤ k ≤ 40.
 	int appleBoxes(int k) {
 		int yellow = 0, red = 0;
-
+		
 		for (int i = 1; i <= k; i += 2)
-			yellow += i * i;
-
+		yellow += i * i;
+		
 		for (int i = 0; i <= k; i += 2)
-			red += i * i;
-
+		red += i * i;
+		
 		return red - yellow;
 	}
-
+	
 	// Define an integer's roundness as the number of trailing zeroes in it.
 	// Given an integer n, check if it's possible to increase n's roundness by
 	// swapping some pair of its digits.
@@ -548,14 +548,14 @@ public class TheCore {
 			last = n % 10;
 			n /= 10;
 		} while (n > 0 && last == 0);
-
+		
 		for (; n > 0; n /= 10)
-			if (n % 10 == 0)
-				return true;
-
+		if (n % 10 == 0)
+		return true;
+		
 		return false;
 	}
-
+	
 	// We want to turn the given integer into a number that has only one non-zero
 	// digit using a tail rounding approach. This means that at each step we take
 	// the last non 0 digit of the number and round it to 0 or to 10. If it's less
@@ -570,17 +570,17 @@ public class TheCore {
 		for (int number = n; number >= 10; number /= 10) {
 			last = number % 10;
 			n -= last * pos;
-
+			
 			pos *= 10;
 			if (last >= 5) {
 				n += pos;
 				number += 10;
 			}
 		}
-
+		
 		return n;
 	}
-
+	
 	// When a candle finishes burning it leaves a leftover. makeNew leftovers can
 	// be combined to make a new candle, which, when burning down, will in turn
 	// leave another leftover.
@@ -593,7 +593,7 @@ public class TheCore {
 	// Precondition: 2 ≤ makeNew ≤ 5.
 	int candles(int candlesNumber, int makeNew) {
 		int candles = candlesNumber;
-
+		
 		int leftlovers = candlesNumber;
 		int cNumber = candlesNumber;
 		int remains = 0;
@@ -603,10 +603,10 @@ public class TheCore {
 			candles += cNumber;
 			remains = leftlovers % makeNew;
 		}
-
+		
 		return candles;
 	}
-
+	
 	// Imagine a white rectangular grid of n rows and m columns divided into two
 	// parts by a diagonal line running from the upper left to the lower right corner.
 	// Now let's paint the grid in two colors according to the following rules:
@@ -619,28 +619,28 @@ public class TheCore {
 	// Precondition: 1 ≤ m ≤ 10^5.
 	int countBlackCells(int n, int m) {
 		int max = 1;
-
+		
 		for (int i = 1; i <= n; i++)
-			if (n % i == 0 && m % i == 0)
-				max = i;
-
+		if (n % i == 0 && m % i == 0)
+		max = i;
+		
 		return n + m + max - 2;
 	}
-
+	
 	// LIST FOREST KNOWLEDGE
-
+	
 	// Given an integer size, return array of length size filled with 1s.
 	// [input] integer size: A positive integer.
 	// Precondition: 1 ≤ size ≤ 1000.
 	int[] createArray(int size) {
 		int[] array = new int[size];
-
+		
 		for (int i = 0; i < size; i ++)
-			array[i] ++;
-
+		array[i] ++;
+		
 		return array;
 	}
-
+	
 	// Given an array of integers, replace all the occurrences of elemToReplace
 	// with substitutionElem.
 	// [input] array.integer inputArray.
@@ -649,12 +649,12 @@ public class TheCore {
 	// Precondition: 0 ≤ elemToReplace ≤ 10.
 	int[] arrayReplace(int[] inputArray, int elemToReplace, int substitutionElem) {
 		for (int i = 0; i < inputArray.length; i ++)
-			if (inputArray[i] == elemToReplace)
-				inputArray[i] = substitutionElem;
-
+		if (inputArray[i] == elemToReplace)
+		inputArray[i] = substitutionElem;
+		
 		return inputArray;
 	}
-
+	
 	// Reversing an array can be a tough task, especially for a novice programmer.
 	// Mary just started coding, so she would like to start with something basic at
 	// first. Instead of reversing the array entirely, she wants to swap just its
@@ -665,18 +665,18 @@ public class TheCore {
 	// Precondition: 0 ≤ arr.length ≤ 50, -10^4 ≤ arr[i] ≤ 10^4.
 	int[] firstReverseTry(int[] arr) {
 		int len = arr.length;
-
+		
 		if (len > 1) {
 			int ini = arr[0];
 			int fi = arr[len - 1];
-
+			
 			arr[0] = fi;
 			arr[len - 1] = ini;
 		}
-
+		
 		return arr;
 	}
-
+	
 	// Given two arrays of integers a and b, obtain the array formed by the elements
 	// of a followed by the elements of b.
 	// [input] array.integer a.
@@ -685,17 +685,17 @@ public class TheCore {
 	// Precondition: 1 ≤ b.length ≤ 10, 1 ≤ b[i] ≤ 15.
 	int[] concatenateArrays(int[] a, int[] b) {
 		int[] outputArray = new int[a.length + b.length];
-
+		
 		int i;
 		for (i = 0; i < a.length; i ++)
-			outputArray[i] = a[i];
-
+		outputArray[i] = a[i];
+		
 		for (int j = 0; i < outputArray.length; i ++, j ++)
-			outputArray[i] = b[j];
-
+		outputArray[i] = b[j];
+		
 		return outputArray;
 	}
-
+	
 	// Remove a part of a given array between given 0-based indexes l and r (inclusive).
 	// [input] array.integer inputArray.
 	// Precondition: 2 ≤ inputArray.length ≤ 10, -10 ≤ inputArray[i] ≤ 10.
@@ -705,17 +705,17 @@ public class TheCore {
 	// Precondition: l ≤ r < inputArray.length.
 	int[] removeArrayPart(int[] inputArray, int l, int r) {
 		int[] out = new int[inputArray.length - (r - l) - 1];
-
+		
 		int i;
 		for (i = 0; i < l; i ++)
-			out[i] = inputArray[i];
-
+		out[i] = inputArray[i];
+		
 		for (int j = r + 1; j < inputArray.length; i ++, j ++)
-			out[i] = inputArray[j];
-
+		out[i] = inputArray[j];
+		
 		return out;
 	}
-
+	
 	// We define the middle of the array arr as follows:
 	// -> if arr contains an odd number of elements, its middle is the element whose
 	//    index number is the same when counting from the beginning of the array and
@@ -731,13 +731,13 @@ public class TheCore {
 	boolean isSmooth(int[] arr) {
 		int len = arr.length;
 		int middle = arr[len / 2];
-
+		
 		if (len % 2 == 0)
-			middle += arr[len / 2 - 1];
-
+		middle += arr[len / 2 - 1];
+		
 		return arr[0] == arr[len - 1] && arr[0] == middle;
 	}
-
+	
 	// We define the middle of the array arr as follows:
 	// -> if arr contains an odd number of elements, its middle is the element whose
 	//    index number is the same when counting from the beginning of the array and
@@ -752,21 +752,21 @@ public class TheCore {
 	// Precondition: 2 ≤ arr.length ≤ 10^4, -10^3 ≤ arr[i] ≤ 10^3.
 	int[] replaceMiddle(int[] arr) {
 		if (arr.length % 2 == 1) return arr;
-
+		
 		int[] out = new int[arr.length - 1];
-
+		
 		out[out.length / 2] = arr[arr.length / 2 - 1] + arr[arr.length / 2];
-
+		
 		int i;
 		for (i = 0; i < out.length / 2; i++)
-			out[i] = arr[i];
-
+		out[i] = arr[i];
+		
 		for (i++; i < out.length; i++)
-			out[i] = arr[i + 1];
-
+		out[i] = arr[i + 1];
+		
 		return out;
 	}
-
+	
 	// Ratiorg got statues of different sizes as a present from CodeMaster for his
 	// birthday, each statue having an non-negative integer size. Since he likes to
 	// make things perfect, he wants to arrange them from smallest to largest so
@@ -778,80 +778,80 @@ public class TheCore {
 	int makeArrayConsecutive2(int[] statues) {
 		int min = 20;
 		int max = 0;
-
+		
 		for (int elem : statues) {
 			if (min > elem)
-				min = elem;
+			min = elem;
 			if (max < elem)
-				max = elem;
+			max = elem;
 		}
-
+		
 		return max - min - statues.length + 1;
 	}
-
+	
 	// LABYRINTH OF NESTED LOOPS
-
+	
 	// Determine if the given number is a power of some non-negative integer.
 	// [input] integer n: A positive integer.
 	// Precondition: 1 ≤ n ≤ 400.
 	boolean isPower(int n) {
 		if (n == 1) return true;
-
+		
 		int result = 0;
-
+		
 		for (int i = 2; i <= 20 && result != n; i++) {
 			result = i * i;
-
+			
 			while (result < n)
-				result *= i;
+			result *= i;
 		}
-
+		
 		return result == n;
 	}
-
+	
 	// Find the number of ways to express n as sum of some (at least two) consecutive
 	// positive integers.
 	// [input] integer n: A positive integer.
 	// Precondition: 1 ≤ n ≤ 25.
 	int isSumOfConsecutive2(int n) {
 		int res = 0;
-
+		
 		int number;
 		for (int ini = 1; ini < n / 2 + 1; ini ++) {
 			number = n;
-
+			
 			for (int subtrahend = ini; number > 0; subtrahend ++)
-				number -= subtrahend;
-
+			number -= subtrahend;
+			
 			if (number == 0)
-				res ++;
+			res ++;
 		}
-
+		
 		return res;
 	}
-
+	
 	// Consider a sequence of numbers a0, a1, ..., an, in which an element is equal to the sum of squared digits of the previous element. The sequence ends once an element that has already been in the sequence appears again.
 	// Given the first element a0, find the length of the sequence.
 	// [input] integer a0: First element of a sequence, positive integer.
 	// Precondition: 1 ≤ a0 ≤ 650.
 	int squareDigitsSequence(int a0) {
 		Set<Integer> sequence = new HashSet<>();
-
+		
 		int aNext = a0;
-
+		
 		while (sequence.add(aNext)) {
 			a0 = aNext;
 			aNext = 0;
-
+			
 			while (a0 > 0) {
 				aNext += Math.pow(a0 % 10, 2);
 				a0 /= 10;
 			}
 		}
-
+		
 		return sequence.size() + 1;
 	}
-
+	
 	// You work in a company that prints and publishes books. You are responsible
 	// for designing the page numbering mechanism in the printer. You know how many
 	// digits a printer can print with the leftover ink. Now you want to write a
@@ -869,14 +869,14 @@ public class TheCore {
 		int i, j;
 		for (i = current; numberOfDigits > 0; i ++) {
 			for (j = i; j > 0 && numberOfDigits > 0; j /= 10)
-				numberOfDigits --;
-
+			numberOfDigits --;
+			
 			if (numberOfDigits == 0 && j != 0) break;
 		}
-
+		
 		return i - 1;
 	}
-
+	
 	// Let's say that number a feels comfortable with number b if a ≠ b and b lies
 	// in the segment [a - s(a), a + s(a)], where s(x) is the sum of x's digits.
 	// How many pairs (a, b) are there, such that a < b, both a and b lie on the
@@ -888,28 +888,28 @@ public class TheCore {
 	// Precondition: 1 ≤ l ≤ r ≤ 1000.
 	int comfortableNumbers(int l, int r) {
 		int comf = 0;
-
+		
 		boolean[][] arr = new boolean[2000][2000];
-
+		
 		int i, j, sum;
 		for (i = l; i <= r; i ++) {
 			sum = 0;
 			for (j = i; j > 0; j /= 10)
-				sum += j % 10;
-
+			sum += j % 10;
+			
 			for (j = i - sum; j <= i + sum; j ++)
-				if (i != j)
-					arr[i][j] = true;
+			if (i != j)
+			arr[i][j] = true;
 		}
-
+		
 		for (i = 0; i < arr.length; i ++)
-			for (j = i + 1; j < arr[i].length; j ++)
-				if (arr[i][j] && arr[j][i])
-					comf ++;
-
+		for (j = i + 1; j < arr[i].length; j ++)
+		if (arr[i][j] && arr[j][i])
+		comf ++;
+		
 		return comf;
 	}
-
+	
 	// We define the weakness of number x as the number of positive integers smaller than x that have more divisors than x.
 	// It follows that the weaker the number, the greater overall weakness it has. For the given integer n, you need to answer two questions:
 	// -> what is the weakness of the weakest numbers in the range [1, n]?
@@ -919,30 +919,30 @@ public class TheCore {
 	// Precondition: 1 ≤ n ≤ 1000.
 	int[] weakNumbers(int n) {
 		int[] result = new int[2];
-
+		
 		int[] divs = new int[n + 1];
 		int[] weaks = new int[n + 1];
-
+		
 		int i, j;
 		for (i = 1; i <= n; i ++) {
 			for (j = 1; j <= i; j ++)
-				if (i % j == 0)
-					divs[i] ++;
+			if (i % j == 0)
+			divs[i] ++;
 			for (j = i - 1; j > 0; j --)
-				if (divs[j] > divs[i])
-					weaks[i] ++;
+			if (divs[j] > divs[i])
+			weaks[i] ++;
 		}
-
+		
 		for (i = 1; i <= n; i ++)
-			if (weaks[i] > result[0])
-				result[0] = weaks[i];
+		if (weaks[i] > result[0])
+		result[0] = weaks[i];
 		for (i = 1; i <= n; i ++)
-			if (weaks[i] == result[0])
-				result[1] ++;
-
+		if (weaks[i] == result[0])
+		result[1] ++;
+		
 		return result;
 	}
-
+	
 	// A rectangle with sides equal to even integers a and b is drawn on the Cartesian plane. Its center (the intersection point of its diagonals) coincides with the point (0, 0), but the sides of the rectangle are not parallel to the axes; instead, they are forming 45 degree angles with the axes.
 	// How many points with integer coordinates are located inside the given rectangle (including on its sides)?
 	// [input] integer a: A positive even integer.
@@ -950,7 +950,7 @@ public class TheCore {
 	// [input] integer b: A positive even integer.
 	// Precondition: 2 ≤ b ≤ 50.
 	int rectangleRotation(int a, int b) {
-
+		
 	}
-
+	
 }
